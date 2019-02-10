@@ -7,6 +7,8 @@ import { modes } from './theme/modes';
 
 import { createGlobalStyle } from 'styled-components';
 
+import { Toggle } from './components/Toogle.jsx';
+
 import { HomePage } from './pages/Home';
 import { ClassComponentPage } from './pages/ClassComponent';
 import { ClassComponentStyledPage } from './pages/ClassComponentStyled';
@@ -43,6 +45,7 @@ class App extends Component {
                 <div className="App">
                     <GlobalStyle />
                     <h1>Theming React</h1>
+                    <Toggle isActive={true} />
                     <div>
                         Switch to <br />
                         <button
