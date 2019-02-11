@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from './utils/ThemeProvider';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
+import styled from 'styled-components';
 import { modes } from './theme/modes';
 
 import { createGlobalStyle } from 'styled-components';
 
-import { Toggle } from './components/Toogle.jsx';
+import { ThemeSwitcher } from './components/ThemeSwitcher';
 
 import { HomePage } from './pages/Home';
 import { ClassComponentPage } from './pages/ClassComponent';
@@ -26,6 +26,22 @@ const GlobalStyle = createGlobalStyle`
         background-color: ${props =>
             props.theme.mode === modes.light ? 'white' : 'black'};
     }
+
+    *,
+    *:before,
+    *:after {
+        box-sizing: border-box;
+    }
+`;
+
+const NavBar = styled.ul`
+    display: flex;
+    justify-content: center;
+    list-style: none;
+
+    li {
+        margin: 0 0.5em;
+    }
 `;
 
 class App extends Component {
@@ -39,29 +55,22 @@ class App extends Component {
         });
     };
 
+    toggleMode = () => {
+        this.setState({
+            mode: this.state.mode === modes.light ? modes.dark : modes.light,
+        });
+    };
+
     render() {
         return (
             <ThemeProvider mode={this.state.mode}>
                 <div className="App">
                     <GlobalStyle />
                     <h1>Theming React</h1>
-                    <Toggle isActive={true} />
-                    <div>
-                        Switch to <br />
-                        <button
-                            onClick={() => {
-                                this.switchMode('light');
-                            }}>
-                            light mode
-                        </button>
-                        &nbsp; &mdash; &nbsp;
-                        <button onClick={() => this.switchMode('dark')}>
-                            dark mode
-                        </button>
-                    </div>
+                    <ThemeSwitcher onClick={() => this.toggleMode()} />
                     <Router>
                         <>
-                            <ul>
+                            <NavBar>
                                 <li>
                                     <Link to="/">Home</Link>
                                 </li>
@@ -81,7 +90,7 @@ class App extends Component {
                                 <li>
                                     <Link to="/sfc-styled">SFC Styled</Link>
                                 </li>
-                            </ul>
+                            </NavBar>
                             <Route
                                 path="/"
                                 exact

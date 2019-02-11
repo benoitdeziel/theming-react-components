@@ -24,8 +24,8 @@ const color = ({ theme }) => {
     return styledTheme.variants('mode', 'variant', defaultStyles);
 };
 
-const backgroundColor = ({ theme }) => {
-    const defaultStyles = {
+const backgroundColor = ({ theme, styles: customStyles }) => {
+    const defaultBackgroundColorStyles = {
         default: {
             light: theme.styles.color.secondary,
             dark: theme.styles.color.primary,
@@ -36,15 +36,19 @@ const backgroundColor = ({ theme }) => {
         },
     };
 
-    const customStyles = (theme.styles && theme.styles.backgroundColor) || {};
+    const customBackgroundColorStyles =
+        (customStyles && customStyles.backgroundColor) || {};
 
-    const styles = Object.assign(defaultStyles, customStyles);
+    const backgroundColorStyles = Object.assign(
+        defaultBackgroundColorStyles,
+        customBackgroundColorStyles,
+    );
 
-    return styledTheme.variants('mode', 'variant', styles);
+    return styledTheme.variants('mode', 'variant', backgroundColorStyles);
 };
 
-const borderColor = ({ theme }) => {
-    return styledTheme.variants('mode', 'variant', {
+const borderColor = ({ theme, styles: customStyles }) => {
+    const defaultBorderColorStyles = {
         default: {
             light: theme.styles.color.secondary,
             dark: theme.styles.color.primary,
@@ -53,7 +57,17 @@ const borderColor = ({ theme }) => {
             light: theme.styles.color.primary,
             dark: theme.styles.color.secondary,
         },
-    });
+    };
+
+    const customBorderColorStyles =
+        (customStyles && customStyles.backgroundColor) || {};
+
+    const borderColorStyles = Object.assign(
+        defaultBorderColorStyles,
+        customBorderColorStyles,
+    );
+
+    return styledTheme.variants('mode', 'variant', borderColorStyles);
 };
 
 const ButtonStyles = css`

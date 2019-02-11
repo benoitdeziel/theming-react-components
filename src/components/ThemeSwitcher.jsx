@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { Toggle } from './Toogle';
 
 export class ThemeSwitcher extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            active: 'false',
+            active: false,
         };
     }
 
@@ -15,14 +16,18 @@ export class ThemeSwitcher extends Component {
         this.setState({
             active: !this.isActive(),
         });
+
+        this.props.onClick();
     };
 
     render() {
         return (
-            <button aria-pressed={this.isActive()} onClick={this.toggle}>
-                dark theme:
-                <span aria-hidden="true">{this.isActive() ? 'on' : 'off'}</span>
-            </button>
+            <Toggle
+                isActive={this.isActive()}
+                offText="Light"
+                onText="Dark"
+                onClick={() => this.toggle()}
+            />
         );
     }
 }

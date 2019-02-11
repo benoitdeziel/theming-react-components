@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '../utils/ThemeProvider';
 
 import customTheme from '../theme/customTheme';
 
@@ -8,28 +8,37 @@ import { Wrapper } from '../components/Wrapper';
 
 const ThemedButtonStyles = {
     backgroundColor: {
-        default: { light: 'limegreen', dark: 'green' },
-        primary: { light: 'orange', dark: 'rebeccapurple' },
-        danger: { light: 'tomato', dark: 'red' },
+        default: {
+            light: customTheme.color.primary,
+            dark: customTheme.color.secondary,
+        },
+        primary: {
+            light: customTheme.color.neutral[700],
+            dark: customTheme.color.primary,
+        },
+        danger: { light: 'white', dark: 'tomato' },
+    },
+    borderColor: {
+        default: {
+            light: customTheme.color.primary,
+            dark: customTheme.color.secondary,
+        },
+        primary: {
+            light: customTheme.color.neutral[700],
+            dark: customTheme.color.primary,
+        },
+        danger: { light: 'tomato', dark: 'tomato' },
     },
 };
 
 const ThemedButton = props => {
-    return (
-        <ThemeProvider theme={{ styles: ThemedButtonStyles }}>
-            <Button {...props} />
-        </ThemeProvider>
-    );
+    return <Button {...props} styles={ThemedButtonStyles} />;
 };
 
 export const SFCPage = ({ currentMode }) => (
-    <ThemeProvider
-        theme={{
-            mode: currentMode,
-            theme: customTheme,
-        }}>
+    <ThemeProvider mode={currentMode} styles={customTheme}>
         <Wrapper>
-            <h2>Themed - SFC</h2>
+            <h2>Themed - SFC Props</h2>
             <ThemedButton>Themed Button</ThemedButton>
             <ThemedButton variant="primary">Themed Primary Button</ThemedButton>
             <br />
