@@ -84,12 +84,6 @@ class App extends Component {
         mode: modes.light,
     };
 
-    switchMode = mode => {
-        this.setState({
-            mode: modes[mode],
-        });
-    };
-
     toggleMode = () => {
         this.setState({
             mode: this.state.mode === modes.light ? modes.dark : modes.light,
