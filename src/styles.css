@@ -12,27 +12,35 @@
     white-space: nowrap;
 
     /* Default Styles */
-    background-color: #00d1b2;
+    background-color: #00d1b2; /* theme.color.primary */
     border-color: transparent;
-    color: #fff;
+    color: #fff; /* theme.color.neutral.[0] */
+}
+
+.dark .Button {
+    background-color: transparent;
+    border-color: #00d1b2; /* theme.color.primary */
+    color: #00d1b2; /* theme.color.primary */
 }
 
 .Button--danger {
-    background-color: #ff3860;
+    background-color: #ff3860; /* theme.color.danger */
     border-color: transparent;
-    color: #fff;
+    color: #fff; /* theme.color.neutral.[0] */
 }
 
 .Button:disabled {
-    background-color: #f5f5f5;
+    background-color: #f5f5f5; /* theme.color.neutral.[100] */
     border-color: transparent;
-    color: #c5c5c5;
+    color: #c5c5c5; /* theme.color.neutral.[300] */
     cursor: default;
 }
 
 .ButtonThemed {
-    background-color: #fff;
-    border-color: #c5c5c5;
-    color: #a5a5a5;
-    box-shadow: 0 3px 5px #c5c5c5;
+    background-color: #fff; /* customTheme.color.neutral.[0] */
+    border-color: #007bff; /* customTheme.color.primary */
+    color: #007bff; /* customTheme.color.neutral.[500] */
+    border-width: 2px;
+    border-radius: 4px;
+    box-shadow: 0 3px 5px #c5c5c5; /* customTheme.color.neutral.[300] */
 }

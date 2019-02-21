@@ -1,11 +1,12 @@
 const theme = {
     color: {
-        primary: '#7E5BEF',
-        secondary: '#FF7849',
+        primary: '#007bff',
+        danger: '#ffc107',
         neutral: {
-            200: '#EFF2F7',
-            500: '#E0E6ED',
-            700: '#3C4858',
+            0: '#ffffff',
+            100: 'f5f5f5',
+            300: '#c5c5c5',
+            500: '#a5a5a5',
         },
     },
 };

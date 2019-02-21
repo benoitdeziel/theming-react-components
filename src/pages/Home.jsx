@@ -16,21 +16,28 @@ export const HomePage = () => (
             <h2>How to use</h2>
             <ul>
                 <li>
-                    Create a new file in the <code>Pages</code> folder
+                    Create a new file in the&nbsp;<code>Pages</code> folder
                 </li>
                 <li>
-                    Create a new route in the <code>index.jsx</code>
+                    Create a new route in the&nbsp;<code>index.jsx</code>
                 </li>
                 <li>
-                    Create a styled-component with the values from
+                    Create a styled-component with the values from&nbsp;
                     <code>styles.css</code>
                 </li>
-                <li>Recreate each following buttons</li>
+                <li>Recreate each of the following buttons</li>
             </ul>
             <h2>Default css styling</h2>
             <h3>Default</h3>
             <p>A button with default styles</p>
-            <button className="Button">Default button</button>
+            <h4>Light</h4>
+            <div className="light">
+                <button className="Button">Default button</button>
+            </div>
+            <h4>Dark</h4>
+            <div className="dark">
+                <button className="Button">Default button</button>
+            </div>
             <h3>Variant</h3>
             <p>
                 A button with a variant prop of <strong>danger</strong>
