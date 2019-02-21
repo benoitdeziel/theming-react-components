@@ -9,16 +9,16 @@ const ToggleComponent = styled.label`
 const ToggleSlider = styled.div`
     display: flex;
     justify-content: ${props => (props.isActive ? 'flex-end' : 'flex-start')};
-    width: calc(1.5em * 2.5);
-    border: 1px solid tomato;
-    border-radius: 1.5em;
+    width: calc(1em * 3);
+    border: 2px solid #a5a5a5;
+    border-radius: 1em;
     padding: 0.25em;
 `;
 
 const ToggleHandle = styled.div`
-    background-color: tomato;
-    width: 1.5em;
-    height: 1.5em;
+    background-color: ${props => (props.isActive ? 'tomato' : '#a5a5a5')};
+    width: 1em;
+    height: 1em;
     border-radius: 100%;
 `;
 
@@ -39,7 +39,7 @@ export const Toggle = props => {
         <ToggleComponent>
             <ToggleText>{props.offText}</ToggleText>
             <ToggleSlider {...props}>
-                <ToggleHandle />
+                <ToggleHandle {...props} />
             </ToggleSlider>
             <ToggleText>{props.onText}</ToggleText>
         </ToggleComponent>
