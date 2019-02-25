@@ -38,95 +38,21 @@ const ComponentContainer = styled.div`
     margin-bottom: 40px;
 `;
 
-const getBackgroundColor = (props) => {
-    let defaultValue = props.theme.styles.color.primary['500'];
-    let selectedStateValue = props.theme.styles.color.primary['700'];
-    let value = defaultValue;
+// Button Styles
 
-    const mode = {
-        light: defaultValue,
-        dark: defaultValue
+const OutlinedButton = css`
+    background-color: transparent;
+    border-color: ${props => props.selected ? props.theme.styles.color.primary['700'] : props.theme.styles.color.primary['500']};
+    color: ${props => props.selected ? props.theme.styles.color.primary['700'] : props.theme.styles.color.primary['500']};
+
+    &:hover {
+        background-color: transparent;
+        border-color: ${props => props.theme.styles.color.primary['700']};
+        color: ${props => props.theme.styles.color.primary['700']};
     }
-    const variant = {
-        danger: props.theme.styles.color.danger['500'],
-        warning: props.theme.styles.color.warning['500'],
-        success: defaultValue
-    }
-    const outlinedValue = 'transparent';
-    
-    value = theme('mode', mode);
-    value = variant[props.variant] || value;
-    value = props.selected ? selectedStateValue : value;
-    value = props.outlined && outlinedValue || value;
+`;
 
-    selectedStateValue = props.outlined ? outlinedValue : selectedStateValue;
-
-    return css`
-        background-color: ${value};
-
-        &:hover {
-            background-color: ${selectedStateValue};
-        }
-    `
-}
-
-const getBorderColor = (props) => {
-    let selectedStateValue = props.theme.styles.color.primary['700'];
-    let defaultValue = 'transparent';
-    let color;
-    const mode = {
-        light: defaultValue,
-        dark: '#00d1b2',
-    }
-    const variant = {
-        danger: defaultValue,
-        warning: defaultValue,
-        success: defaultValue,
-    }
-    const outlined = props.selected ? props.theme.styles.color.primary['700']: props.theme.styles.color.primary['500'];
-    color = theme('mode', mode);
-    color = variant[props.variant] || color;
-    color = props.outlined && outlined || color;
-
-    return css`
-        border-color: ${color}
-
-        &:hover {
-            border-color: ${selectedStateValue};
-        }
-    `;
-}
-
-const getColor = (props) => {
-    let selectedStateValue = props.theme.styles.color.neutral['0'];
-    let defaultValue = props.theme.styles.color.neutral['0'];
-    let color;
-    const mode = {
-        light: defaultValue,
-        dark: defaultValue,
-    }
-    const variant = {
-        danger: defaultValue,
-        warning: defaultValue,
-        success: defaultValue,
-    }
-    const outlined = props.selected ? props.theme.styles.color.primary['700']: props.theme.styles.color.primary['500'];
-    color = theme('mode', mode);
-    color = variant[props.variant] || color;
-    if (props.outlined) {
-        color = outlined;
-        selectedStateValue = props.theme.styles.color.primary['700']
-    }
-    return css`
-        color: ${color};
-
-        &:hover {
-            color: ${selectedStateValue}
-        }
-    `;
-}
-
-const Button = styled.button`
+const BaseButton = styled.button`
     font-size: 1rem;
     line-height: 2;
     border-width: 1px;
@@ -137,18 +63,95 @@ const Button = styled.button`
     padding-right: .75em;
     text-align: center;
     white-space: nowrap;
+    background-color: ${props => theme('mode', {
+        light: props.selected ? props.theme.styles.color.primary['700'] : props.theme.styles.color.primary['500'],
+        dark: props.selected ? props.theme.styles.color.neutral['100'] : props.theme.styles.color.neutral['0'],  
+    })};
+    color: ${props => theme('mode', {
+        light: props.theme.styles.color.neutral['0'],
+        dark: props.selected ? props.theme.styles.color.neutral['1000'] : props.theme.styles.color.neutral['700']
+    })};
+    border-color: transparent;
 
-    ${getBackgroundColor};
-    ${getBorderColor};
-    ${getColor};
+    &:hover {
+        background-color: ${props => theme('mode', {
+            light: props.theme.styles.color.primary['700'],
+            dark: props.theme.styles.color.neutral['100'],  
+        })};
+        color: ${props => theme('mode', {
+            dark: props.theme.styles.color.neutral['1000']
+        })};
+    }
 
     &:disabled {
-        background-color: #f5f5f5;
-        border-color: transparent;
-        color: #c5c5c5;
-        cursor: default;
+        border-color: transparent !important;
+        cursor: default !important;
+        background-color: ${props => props.theme.styles.color.neutral['100']} !important;
+        color: ${props => props.theme.styles.color.neutral['300']} !important;
+    }
+
+    ${props => props.outlined && OutlinedButton}
+`;
+
+const OutlinedDangerButton = css`
+    background-color: transparent;
+    color: ${props => props.theme.styles.color.danger['500']};
+    border-color: ${props => props.theme.styles.color.danger['500']};
+
+    :not([disabled]):hover {
+        background-color: transparent;
+        color: ${props => props.theme.styles.color.danger['700']};
+        border-color: ${props => props.theme.styles.color.danger['700']};
     }
 `;
+
+const DangerButton = styled(BaseButton)`
+    background-color: ${props => props.theme.styles.color.danger['500']};
+    
+    :not([disabled]):hover {
+        background-color: ${props => props.theme.styles.color.danger['700']};
+    }
+
+    ${props => props.outlined && OutlinedDangerButton}
+`;
+
+const SuccessButton = styled(BaseButton)`
+    ${props => props.outlined && OutlinedButton};
+`;
+
+const OutlinedWarningButton = css`
+    background-color: transparent;
+    color: ${props => props.theme.styles.color.warning['500']};
+    border-color: ${props => props.theme.styles.color.warning['500']};
+
+    &:hover {
+        background-color: transparent;
+        color: ${props => props.theme.styles.color.warning['700']};
+        border-color: ${props => props.theme.styles.color.warning['700']};
+    }
+`;
+
+const WarningButton = styled(BaseButton)`
+    background-color: ${props => props.theme.styles.color.warning['500']};
+
+    &:hover {
+        background-color: ${props => props.theme.styles.color.warning['700']};
+    }
+
+    ${props => props.outlined && OutlinedWarningButton}
+`;
+
+const Button = (props) => {
+    const variants = {
+        danger: (props) => <DangerButton {...props}></DangerButton>,
+        warning: (props) => <WarningButton {...props}></WarningButton>,
+        success: (props) => <SuccessButton {...props}></SuccessButton>,
+    }
+    if (props.variant) {
+        return variants[props.variant](props);
+    }
+    return <BaseButton {...props}></BaseButton>
+}
 
 const DemoButton = styled(Button)`
     margin: 10px 0;
@@ -161,6 +164,10 @@ const CustomThemedButton = styled(DemoButton)`
     border-width: 2px;
     border-radius: 4px;
     box-shadow: 0 3px 5px #c5c5c5;
+
+    &:hover {
+        background-color: #fff;
+    }
 `;
 
 export const MaestroPlayground = () => (
@@ -172,20 +179,26 @@ export const MaestroPlayground = () => (
             <ComponentContainer>
                 <DemoButton>Normal</DemoButton>
                 <DemoButton selected>Selected</DemoButton>
-                <DemoButton outlined>Normal Outlined</DemoButton>
-                <DemoButton outlined selected>Selected Outlined</DemoButton>
+                <DemoButton outlined>Outlined</DemoButton>
+                <DemoButton outlined selected>Outlined Selected</DemoButton>
                 <DemoButton disabled>Disabled</DemoButton>
             </ComponentContainer>
             <SectionTitle>Variants</SectionTitle>
             <ComponentGroup>
                 <ComponentContainer>
-                    <DemoButton variant="success">Success Variant Button</DemoButton>
+                    <DemoButton variant="success">Success</DemoButton>
+                    <DemoButton variant="success" outlined>Outlined</DemoButton>
+                    <DemoButton variant="success" outlined disabled>Disabled</DemoButton>
                 </ComponentContainer>
                 <ComponentContainer>
-                    <DemoButton variant="danger">Danger Variant Button</DemoButton>
+                    <DemoButton variant="danger">Danger</DemoButton>
+                    <DemoButton variant="danger" outlined>Outlined</DemoButton>
+                    <DemoButton variant="danger" outlined disabled>Disabled</DemoButton>
                 </ComponentContainer>
                 <ComponentContainer>
-                    <DemoButton variant="warning">Warning Variant Button</DemoButton>
+                    <DemoButton variant="warning">Warning</DemoButton>
+                    <DemoButton variant="warning" outlined>Outlined</DemoButton>
+                    <DemoButton variant="warning" outlined disabled>Disabled</DemoButton>
                 </ComponentContainer>
             </ComponentGroup>
             <SectionTitle>Custom Theme</SectionTitle>

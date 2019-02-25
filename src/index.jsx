@@ -4,7 +4,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import theme from 'styled-theming';
 
-import Basic from './pages/Basic';
 import { HomePage } from './pages/Home';
 import { MaestroPlayground } from './pages/MaestroPlayground';
 import { ThemeProvider } from './utils/ThemeProvider';
@@ -108,8 +107,7 @@ class App extends Component {
                                 <Logo>Theming React</Logo>
                                 <NavBar>
                                     <NavBarLink to="/">Home</NavBarLink>
-                                    <NavBarLink to="/basic">Basic</NavBarLink>
-                                    <NavBarLink to="/maestro">Maestro Playground</NavBarLink>
+                                    <NavBarLink to="/maestro">Maestro</NavBarLink>
                                 </NavBar>
                                 <Actions>
                                     <ThemeSwitcher
@@ -122,12 +120,6 @@ class App extends Component {
                                 exact
                                 render={() => (
                                     <HomePage currentMode={this.state.mode} />
-                                )}
-                            />
-                            <Route
-                                path="/basic"
-                                render={() => (
-                                        <Basic currentMode={this.state.mode} />
                                 )}
                             />
                             <Route
