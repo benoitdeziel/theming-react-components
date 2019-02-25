@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { ThemeProvider } from './utils/ThemeProvider';
+import styled, { createGlobalStyle } from 'styled-components';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
-import styled from 'styled-components';
-import { modes } from './theme/modes';
+import theme from 'styled-theming';
 
-import { createGlobalStyle } from 'styled-components';
-
-import { ThemeSwitcher } from './components/ThemeSwitcher';
-
-import { HomePage } from './pages/Home';
 import Basic from './pages/Basic';
+import { HomePage } from './pages/Home';
+import { MaestroPlayground } from './pages/MaestroPlayground';
+import { ThemeProvider } from './utils/ThemeProvider';
+import { ThemeSwitcher } from './components/ThemeSwitcher';
+import { modes } from './theme/modes';
 
 const GlobalStyle = createGlobalStyle`
     body {
         padding: 0;
         margin: 0;
         font-family: sans-serif;
-        color: ${props =>
-            props.theme.mode === modes.light ? 'black' : 'white'};
-        background-color: ${props =>
-            props.theme.mode === modes.light ? 'white' : 'black'};
+        color: ${props => theme('mode', {
+            light: props.theme.styles.color.neutral['900'],
+            dark: props.theme.styles.color.neutral['0'],
+        })};
+        background-color: ${props => theme('mode', {
+            light: props.theme.styles.color.neutral['0'],
+            dark: props.theme.styles.color.neutral['900'],
+        })};
     }
 
     *,
@@ -36,6 +39,10 @@ const AppHeader = styled.div`
     align-items: center;
     padding: 0 1rem;
     border-bottom: 1px solid #c5c5c5;
+    background-color: ${props => theme('mode', {
+        light: props.theme.styles.color.neutral['0'],
+        dark: props.theme.styles.color.neutral['1000'],
+    })};
 `;
 
 const Logo = styled.div`
@@ -102,6 +109,7 @@ class App extends Component {
                                 <NavBar>
                                     <NavBarLink to="/">Home</NavBarLink>
                                     <NavBarLink to="/basic">Basic</NavBarLink>
+                                    <NavBarLink to="/maestro">Maestro Playground</NavBarLink>
                                 </NavBar>
                                 <Actions>
                                     <ThemeSwitcher
@@ -116,7 +124,18 @@ class App extends Component {
                                     <HomePage currentMode={this.state.mode} />
                                 )}
                             />
-                            <Route path="/basic" render={() => <Basic />} />
+                            <Route
+                                path="/basic"
+                                render={() => (
+                                        <Basic currentMode={this.state.mode} />
+                                )}
+                            />
+                            <Route
+                                path="/maestro"
+                                render={() => (
+                                        <MaestroPlayground currentMode={this.state.mode} />
+                                )}
+                            />
                         </>
                     </Router>
                 </div>
