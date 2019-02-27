@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Toggle } from './Toogle';
+import { Toggle } from './Toggle';
 
 export class ThemeSwitcher extends Component {
     constructor(props) {
