@@ -10,7 +10,7 @@ import { createGlobalStyle } from 'styled-components';
 import { ThemeSwitcher } from './components/ThemeSwitcher';
 
 import { HomePage } from './pages/Home';
-import { Basic } from './pages/Basic';
+import Basic from './pages/Basic';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -116,12 +116,7 @@ class App extends Component {
                                     <HomePage currentMode={this.state.mode} />
                                 )}
                             />
-                            <Route
-                                path="/basic"
-                                render={() => (
-                                    <Basic currentMode={this.state.mode} />
-                                )}
-                            />
+                            <Route path="/basic" render={() => <Basic />} />
                         </>
                     </Router>
                 </div>

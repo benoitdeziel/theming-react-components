@@ -4,7 +4,7 @@ const theme = {
         danger: '#ff3860',
         neutral: {
             0: '#ffffff',
-            100: 'f5f5f5',
+            100: '#f5f5f5',
             300: '#c5c5c5',
             500: '#a5a5a5',
         },
