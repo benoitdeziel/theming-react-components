@@ -23,6 +23,15 @@
     color: #00d1b2; /* theme.color.primary */
 }
 
+.ButtonThemed {
+    background-color: #fff; /* customTheme.color.neutral.[0] */
+    border-color: #007bff; /* customTheme.color.primary */
+    color: #007bff; /* customTheme.color.primary */
+    border-width: 2px;
+    border-radius: 4px;
+    box-shadow: 0 3px 5px #c5c5c5; /* customTheme.color.neutral.[300] */
+}
+
 .Button--danger {
     background-color: #ff3860; /* theme.color.danger */
     border-color: transparent;
@@ -36,11 +45,6 @@
     pointer-events: none;
 }
 
-.ButtonThemed {
-    background-color: #fff; /* customTheme.color.neutral.[0] */
-    border-color: #007bff; /* customTheme.color.primary */
-    color: #007bff; /* customTheme.color.primary */
-    border-width: 2px;
-    border-radius: 4px;
-    box-shadow: 0 3px 5px #c5c5c5; /* customTheme.color.neutral.[300] */
+.Button + .Button {
+    margin-left: 1em;
 }
