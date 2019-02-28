@@ -56,6 +56,10 @@ const Button = styled.button.attrs({
         color: ${tokens.color('neutral', '300')};
         pointer-events: none;
     }
+
+    & + & {
+        margin-left: 1em;
+    }
 `;
 
 const ThemedButton = styled(Button)`
@@ -83,13 +87,19 @@ const StyledTools = () => (
             <h4>Variant</h4>
             <Button variant="danger">Danger Button</Button>
             <h4>Attribute</h4>
-            <Button disabled>Disabled button</Button>
+            <Button disabled>Disabled Button</Button>
+            <Button variant="danger" disabled>
+                Disabled Danger Button
+            </Button>
             <h3>Themed</h3>
-            <ThemedButton>Themed button</ThemedButton>
+            <ThemedButton>Themed Button</ThemedButton>
             <h4>Variant</h4>
-            <ThemedButton variant="danger">Themed button</ThemedButton>
+            <ThemedButton variant="danger">Themed Danger Button</ThemedButton>
             <h4>Attribute</h4>
-            <ThemedButton disabled>Themed button</ThemedButton>
+            <ThemedButton disabled>Disabled Themed Button</ThemedButton>
+            <ThemedButton variant="danger" disabled>
+                Disabled Themed Danger Button
+            </ThemedButton>
             <h2>Notes</h2>
             <h4>Pros</h4>
             <ul>
