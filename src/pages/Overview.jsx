@@ -34,8 +34,11 @@ const properties = {
 };
 
 const Question = styled.h1`
-    text-align: center;
-    font-family: cursive;
+    font-size: 2rem;
+    margin: 1em 0 0;
+    color: orangered;
+    background: whitesmoke;
+    padding: 10px;
 `;
 
 const CodeSamples = styled.div`
@@ -44,57 +47,10 @@ const CodeSamples = styled.div`
     grid-gap: 30px;
 `;
 
-function Button(props) {
-    return (
-        <button {...props}>
-            <div className="inner">{props.children}</div>
-        </button>
-    );
-}
-
-Button.propTypes = {
-    className: PropTypes.string.isRequired,
-    variant: PropTypes.string,
-};
-
-Button.defaultProps = {
-    variant: 'primary',
-};
-
-const LaButton = styled(Button)`
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-appearance: button;
-    cursor: pointer;
-    border: solid 1px;
-    font-family: inherit;
-    line-height: inherit;
-    font-size: 1rem;
-    padding: 5px 10px;
-    display: inline-block;
-    background-color: green;
-    border-color: green;
-    border: solid 1px;
-    color: white;
-    .inner {
-        padding: 5px 0;
-    }
-    &:hover {
-        background: lightblue;
-    }
-`;
-
-export function RobsCoolPage() {
+export function Overview() {
     return (
         <Wrapper>
-            <h2>Rob's Cool Page</h2>
-            <marquee behavior="scroll" scrollamount="20" direction="left">
-                🔥🔥🔥 🛹 nO gRoWnUpZ All0wEd 🛹 🔥🔥🔥
-            </marquee>
-            <hr />
-            <LaButton>Hi</LaButton>
+            <h2>Overview</h2>
             <Question>
                 How are buttons handled in different major CSS Frameworks?
             </Question>
