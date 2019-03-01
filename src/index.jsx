@@ -11,6 +11,7 @@ import { ThemeSwitcher } from './components/ThemeSwitcher';
 
 import { HomePage } from './pages/Home';
 import Basic from './pages/Basic';
+import { RobsCoolPage } from './pages/RobsCoolPage';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -118,6 +119,10 @@ class App extends Component {
                                 )}
                             />
                             <Route path="/basic" render={() => <Basic />} />
+                            <Route
+                                path="/rob"
+                                render={() => <RobsCoolPage />}
+                            />
                         </>
                     </Router>
                 </div>

@@ -94,12 +94,13 @@ export function RobsCoolPage() {
                 🔥🔥🔥 🛹 nO gRoWnUpZ All0wEd 🛹 🔥🔥🔥
             </marquee>
             <hr />
+            <LaButton>Hi</LaButton>
             <Question>
                 How are buttons handled in different major CSS Frameworks?
             </Question>
             <CodeSamples>
                 {codeExamples.map(({ title, link, code }) => (
-                    <div>
+                    <div key={title}>
                         <h2>
                             <a href={link} target="_blank">
                                 {title}
