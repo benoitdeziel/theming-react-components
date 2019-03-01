@@ -1,3 +1,9 @@
+@font-face {
+    src: url('https://cdn.landr.com/fonts/Sailec/SailecRegular.woff2')
+        format('woff2');
+    font-family: 'Sailec';
+}
+
 .Button {
     /* Base styles */
     font-size: 1rem;
@@ -6,8 +12,8 @@
     border-style: solid;
     cursor: pointer;
     justify-content: center;
-    padding-left: .75em;
-    padding-right: .75em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
     text-align: center;
     white-space: nowrap;
 

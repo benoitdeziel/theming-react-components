@@ -13,10 +13,11 @@ import { HomePage } from './pages/Home';
 import Basic from './pages/Basic';
 
 const GlobalStyle = createGlobalStyle`
+
     body {
         padding: 0;
         margin: 0;
-        font-family: sans-serif;
+        font-family: Sailec;
         color: ${props =>
             props.theme.mode === modes.light ? 'black' : 'white'};
         background-color: ${props =>
