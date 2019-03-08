@@ -1,7 +1,6 @@
 import React from 'react';
 import { Wrapper } from '../components/Wrapper';
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import codeExamples from '../lib/codeExamples';
@@ -47,6 +46,13 @@ const CodeSamples = styled.div`
     grid-gap: 30px;
 `;
 
+const ButtonGrid = styled.div`
+    button {
+        float: left;
+        margin: 0 10px 10px 0;
+    }
+`;
+
 export function Overview() {
     return (
         <Wrapper>
@@ -87,6 +93,11 @@ button {
                     />
                 </li>
                 <li>
+                    We need to be able to conditionally add CSS, not just alter
+                    the value but conditionally add the property and value, or
+                    even a sub-selector/property/value
+                </li>
+                <li>
                     {`Ideally we would be able to use css functions (Utilties) to generate groups of css properties, or tokens, etc.`}
                     <CodeSnippet
                         codeString={`
@@ -109,7 +120,7 @@ button {
             </ul>
             <hr />
             <Question>What are the properties on Buttons?</Question>
-            <ul>
+            <CodeSamples>
                 {Object.keys(properties).map(x => (
                     <li key={`li-${x}`}>
                         <strong>{x}</strong>
@@ -120,7 +131,8 @@ button {
                         </ul>
                     </li>
                 ))}
-            </ul>
+            </CodeSamples>
+            <Question>Let's make some buttons!</Question>
         </Wrapper>
     );
 }
