@@ -12,6 +12,7 @@ import { ThemeSwitcher } from './components/ThemeSwitcher';
 import { HomePage } from './pages/Home';
 import Basic from './pages/Basic';
 import StyledTools from './pages/StyledTools';
+import StyledMap from './pages/StyledMap';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -106,6 +107,9 @@ class App extends Component {
                                     <NavBarLink to="/styled-tools">
                                         Styled Tools
                                     </NavBarLink>
+                                    <NavBarLink to="/styled-map">
+                                        Styled Map
+                                    </NavBarLink>
                                 </NavBar>
                                 <Actions>
                                     <ThemeSwitcher
@@ -124,6 +128,10 @@ class App extends Component {
                             <Route
                                 path="/styled-tools"
                                 render={() => <StyledTools />}
+                            />
+                            <Route
+                                path="/styled-map"
+                                render={() => <StyledMap />}
                             />
                         </>
                     </Router>

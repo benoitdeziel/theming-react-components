@@ -1,11 +1,39 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { prop, switchProp } from 'styled-tools';
 
 import { tokens } from '../theme';
 import { customTokens } from '../theme/customTokens';
 
 import { Wrapper } from '../components/Wrapper';
+
+const ButtonTokens = {
+    variant: {
+        primary: {
+            light: {
+                color: tokens.color('neutral', '0'),
+                backgroundColor: tokens.color('primary'),
+                borderColor: 'transparent',
+            },
+            dark: {
+                color: tokens.color('primary'),
+                backgroundColor: 'transparent',
+                borderColor: tokens.color('primary'),
+            },
+        },
+        danger: {
+            light: {
+                color: tokens.color('neutral', '0'),
+                backgroundColor: tokens.color('danger'),
+                borderColor: 'transparent',
+            },
+            dark: {
+                color: tokens.color('neutral', '0'),
+                backgroundColor: tokens.color('danger'),
+                borderColor: 'transparent',
+            },
+        },
+    },
+};
 
 const ButtonBase = css`
     font-size: 1rem;
@@ -20,35 +48,19 @@ const ButtonBase = css`
     white-space: nowrap;
 `;
 
-const ButtonVariants = css`
-    ${switchProp(prop('variant', 'default'), {
-        default: css`
-            ${switchProp('theme.mode', {
-                light: css`
-                    color: ${tokens.color('neutral', '0')};
-                    background-color: ${tokens.color('primary')};
-                    border-color: transparent;
-                `,
-                dark: css`
-                    color: ${tokens.color('primary')};
-                    background-color: transparent;
-                    border-color: ${tokens.color('primary')};
-                `,
-            })};
-        `,
-        danger: css`
-            color: ${tokens.color('primary')};
-            background-color: transparent;
-            border-color: ${tokens.color('primary')};
-        `,
-    })}
-`;
-
 const Button = styled.button.attrs({
     type: 'button',
+    variant: props => (props.variant ? props.variant : 'primary'),
 })`
     ${ButtonBase}
-    ${ButtonVariants}
+
+    color: ${props => {
+        return ButtonTokens.variant[props.variant][props.theme.mode].color;
+    }};
+    background-color: ${props =>
+        ButtonTokens.variant[props.variant][props.theme.mode].backgroundColor};
+    border-color: ${props =>
+        ButtonTokens.variant[props.variant][props.theme.mode].borderColor};
 
     &:disabled {
         background-color: ${tokens.color('neutral', '100')};
@@ -66,17 +78,9 @@ const ThemedButton = styled(Button)`
     border-width: 2px;
     border-radius: 4px;
     box-shadow: 0 3px 5px ${customTokens.color('neutral', '300')};
-
-    ${switchProp(prop('variant', 'default'), {
-        default: css`
-            background-color: ${customTokens.color('neutral', '0')};
-            border-color: ${customTokens.color('primary')};
-            color: ${customTokens.color('primary')};
-        `,
-    })}
 `;
 
-const StyledTools = () => (
+const StyledMap = () => (
     <>
         <Wrapper>
             <h1>Styled Tools</h1>
@@ -103,14 +107,17 @@ const StyledTools = () => (
             <h2>Notes</h2>
             <h4>Pros</h4>
             <ul>
-                <li>Nice utilities</li>
+                <li>?</li>
             </ul>
             <h4>Cons</h4>
             <ul>
-                <li>Design System Utils are a little opiniated</li>
+                <li>Property declaration are hard to read</li>
+                <li>Duplication of settings</li>
+                <li>Feels less natural than writing css</li>
+                <li>Lots of conditionnal check</li>
             </ul>
         </Wrapper>
     </>
 );
 
-export default StyledTools;
+export default StyledMap;
