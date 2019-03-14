@@ -2,13 +2,14 @@ import React from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 import { modes } from '../theme/modes';
-import defaultTheme from '../theme/default';
 
-export const ThemeProvider = ({ mode, styles, children }) => {
-    const theme = {
+export const ThemeProvider = ({ mode, theme, children }) => {
+    const themeOject = {
         mode: mode || modes.light,
-        styles: styles || defaultTheme,
+        ...theme,
     };
 
-    return <StyledThemeProvider theme={theme}>{children}</StyledThemeProvider>;
+    return (
+        <StyledThemeProvider theme={themeOject}>{children}</StyledThemeProvider>
+    );
 };

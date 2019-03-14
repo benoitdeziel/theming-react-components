@@ -1,10 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import { tokens } from '../theme';
-import { customTokens } from '../theme/customTokens';
+import tokens from '../theme/default/light';
+import customTokens from '../theme/custom/light';
 
-import { Wrapper } from '../components/Wrapper';
+import { Wrapper } from '../common/Wrapper';
 
 const ButtonTokens = {
     variant: {

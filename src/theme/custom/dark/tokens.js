@@ -1,17 +1,4 @@
 const designTokens = {
-    type: {
-        baseFontSize: '1rem',
-
-        sizes: {
-            xs: '0.7rem',
-            sm: '0.85rem',
-            md: '1rem',
-            lg: '1.2rem',
-            xl: '1.4rem',
-            xxl: '2rem',
-        },
-    },
-
     colors: {
         colorPalette: {
             text: {
@@ -20,7 +7,12 @@ const designTokens = {
                 lighter: '#637381',
             },
             primary: {
-                base: '#00d1b2',
+                base: '#32CBCB',
+                300: '#84DFDF',
+                400: '#5AD5D5',
+                500: '#32CBCB',
+                600: '#2DB6B6',
+                700: '#28A2A2',
             },
             danger: {
                 base: '#ff3860',
@@ -32,23 +24,6 @@ const designTokens = {
                 500: '#a5a5a5',
             },
         },
-    },
-
-    breakpoints: {
-        s: 200,
-        m: '500px',
-        l: 800,
-    },
-
-    zIndex: {
-        low: 10,
-        mid: 100,
-        high: 1000,
-    },
-
-    spacing: {
-        scale: [0, 8, 16, 24, 32, 40],
-        baseline: 20,
     },
 };
 

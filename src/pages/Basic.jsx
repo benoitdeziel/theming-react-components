@@ -1,9 +1,9 @@
 import React from 'react';
 import styled, { withTheme } from 'styled-components';
 
-import { Wrapper } from '../components/Wrapper';
-import defaultTheme from '../theme/default';
-import customTheme from '../theme/customTheme';
+import { Wrapper } from '../common/Wrapper';
+import defaultTheme from '../theme/default/light';
+import customTheme from '../theme/custom/light';
 
 const Button = styled.button.attrs({ type: 'button' })`
     /* Base styles */
@@ -22,21 +22,21 @@ const Button = styled.button.attrs({ type: 'button' })`
     background-color: ${({ variant, theme }) => {
         if (theme.mode === 'light') {
             return variant === 'danger'
-                ? defaultTheme.color.danger
-                : defaultTheme.color.primary;
+                ? defaultTheme.color('danger')
+                : defaultTheme.color('primary');
         } else if (theme.mode === 'dark') {
             return variant === 'danger'
-                ? defaultTheme.color.danger
-                : defaultTheme.color.primary;
+                ? defaultTheme.color('danger')
+                : defaultTheme.color('primary');
         }
     }};
     border-color: transparent;
-    color: ${defaultTheme.color.neutral[0]};
+    color: ${defaultTheme.color('neutral', 0)};
 
     &:disabled {
-        background-color: ${defaultTheme.color.neutral[100]};
+        background-color: ${defaultTheme.color('neutral', 100)};
         border-color: transparent;
-        color: ${defaultTheme.color.neutral[300]};
+        color: ${defaultTheme.color('neutral', 300)};
         cursor: default;
     }
 `;
@@ -44,17 +44,17 @@ const Button = styled.button.attrs({ type: 'button' })`
 const ThemedButton = styled(Button)`
     border-color: ${({ variant }) =>
         variant === 'danger'
-            ? customTheme.color.danger
-            : customTheme.color.primary};
+            ? customTheme.color('danger')
+            : customTheme.color('primary')};
     background-color: transparent;
     color: ${({ variant }) =>
         variant === 'danger'
-            ? customTheme.color.danger
-            : customTheme.color.primary};
+            ? customTheme.color('danger')
+            : customTheme.color('primary')};
 
     border-width: 2px;
     border-radius: 4px;
-    box-shadow: 0 3px 5px ${customTheme.color.neutral[300]};
+    box-shadow: 0 3px 5px ${customTheme.color('neutral', 300)};
 `;
 
 const Basic = () => (

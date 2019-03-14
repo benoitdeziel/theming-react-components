@@ -4,15 +4,17 @@ import { ThemeProvider } from './utils/ThemeProvider';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { modes } from './theme/modes';
+import theme from './theme/default';
 
 import { createGlobalStyle } from 'styled-components';
 
-import { ThemeSwitcher } from './components/ThemeSwitcher';
+import { ThemeSwitcher } from './common/ThemeSwitcher';
 
 import { HomePage } from './pages/Home';
 import Basic from './pages/Basic';
 import StyledTools from './pages/StyledTools';
 import StyledMap from './pages/StyledMap';
+import Composable from './pages/Composable';
 
 const GlobalStyle = createGlobalStyle`
     body {
@@ -94,7 +96,9 @@ class App extends Component {
 
     render() {
         return (
-            <ThemeProvider mode={this.state.mode}>
+            <ThemeProvider
+                mode={this.state.mode}
+                theme={theme[this.state.mode]}>
                 <div className="App">
                     <GlobalStyle />
                     <Router>
@@ -109,6 +113,9 @@ class App extends Component {
                                     </NavBarLink>
                                     <NavBarLink to="/styled-map">
                                         Styled Map
+                                    </NavBarLink>
+                                    <NavBarLink to="/composable">
+                                        Composable
                                     </NavBarLink>
                                 </NavBar>
                                 <Actions>
@@ -132,6 +139,10 @@ class App extends Component {
                             <Route
                                 path="/styled-map"
                                 render={() => <StyledMap />}
+                            />
+                            <Route
+                                path="/composable"
+                                render={() => <Composable />}
                             />
                         </>
                     </Router>
