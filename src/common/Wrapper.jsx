@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { modes } from '../theme/modes';
+import { modes } from '../shared/theme/modes';
 
 export const Wrapper = styled.section`
     padding: 1em;

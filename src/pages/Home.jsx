@@ -1,10 +1,11 @@
 import React from 'react';
+import { withTheme } from 'styled-components';
 
-import { Wrapper } from '../components/Wrapper';
+import { Wrapper } from '../common/Wrapper';
 
 import '../styles.css';
 
-export const HomePage = () => (
+const HomePage = () => (
     <>
         <Wrapper>
             <h1>Theming React</h1>
@@ -74,3 +75,5 @@ export const HomePage = () => (
         </Wrapper>
     </>
 );
+
+export default withTheme(HomePage);
