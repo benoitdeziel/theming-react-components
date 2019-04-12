@@ -1,6 +1,6 @@
 import React from 'react';
 import { Toggle } from './Toggle';
-import { useTheme } from '../utils/ThemeProvider';
+import { useTheme } from './utils/ThemeProvider';
 
 export const ThemeSwitcher = props => {
     const themeState = useTheme();
@@ -10,8 +10,8 @@ export const ThemeSwitcher = props => {
     return (
         <Toggle
             isActive={themeState.isDarkMode}
-            offText="Light"
-            onText="Dark"
+            offLabel="Light"
+            onLabel="Dark"
             onClick={() => toggle()}
         />
     );

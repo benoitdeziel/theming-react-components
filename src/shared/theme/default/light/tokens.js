@@ -1,4 +1,4 @@
-const tokens = {
+export default {
     typography: {
         typeface:
             '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
@@ -54,11 +54,15 @@ const tokens = {
                 600: '#d6ae00',
                 700: '#be9b00',
             },
-            social: {
-                facebook: '#4267b2',
-                soundcloud: '#ff5500',
-                twitter: '#00aced',
+            success: {
+                300: '#84dfdf',
+                400: '#5ad5d5',
+                500: '#32cbcb',
+                600: '#2db6b6',
+                700: '#28a2a2',
             },
+            facebook: { 500: '#4267b2', 700: '#35528e' },
+            twitter: { 500: '#00aced', 700: '#008abe' },
         },
         text: {
             subtle: '',
@@ -83,5 +87,3 @@ const tokens = {
         lg: '1.563rem',
     },
 };
-
-export default { tokens };

@@ -1,7 +1,5 @@
-import lightTokens from '../light/tokens';
+import { prepareTheme } from '../utils';
 
-const tokens = {
-    ...lightTokens,
-};
+const tokens = {};
 
-export default { tokens };
+export default prepareTheme('tokens', tokens);

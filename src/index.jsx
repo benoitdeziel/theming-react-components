@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import { ThemeSwitcher } from './common/ThemeSwitcher';
-import { ThemeProvider, useTheme } from './utils/ThemeProvider';
+import { ThemeProvider, useTheme } from './common/utils/ThemeProvider';
 
 import Theme from './shared/theme/default';
 import { modes } from './shared/theme/modes';
@@ -41,7 +41,7 @@ const GlobalStyle = createGlobalStyle`
     h3,
     h4,
     h5 {
-        margin: 2.75rem 0 1rem;
+        margin: 1em 0;
         font-weight: 400;
         line-height: 1.15;
     }
@@ -53,6 +53,8 @@ const GlobalStyle = createGlobalStyle`
 
     h2 {
         font-size: 3.157em;
+        padding-bottom: 0.5em;
+        border-bottom: 1px solid #ccc;
     }
 
     h3 {
@@ -61,6 +63,7 @@ const GlobalStyle = createGlobalStyle`
 
     h4 {
         font-size: 1.777em;
+        font-weight: 500;
     }
 
     h5 {
@@ -75,10 +78,15 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const AppHeader = styled.div`
+    position: sticky;
+    top: 0;
+    z-index: 100;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     padding: 0 1rem;
+    background-color: ${props =>
+        props.theme.mode === modes.light ? 'white' : 'black'};
     border-bottom: 1px solid #c5c5c5;
 `;
 

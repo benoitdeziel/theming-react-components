@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
-import { modes } from '../shared/theme/modes';
+import { modes } from '../../shared/theme/modes';
 
 const LOCALSTORAGE_MODE_NAME = 'LandrDarkMode';
 

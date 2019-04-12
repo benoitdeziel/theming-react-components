@@ -34,14 +34,14 @@ const ToggleText = styled.div`
     }
 `;
 
-export const Toggle = props => {
+export const Toggle = ({ offLabel, onLabel, isActive, ...props }) => {
     return (
-        <ToggleComponent>
-            <ToggleText>{props.offText}</ToggleText>
-            <ToggleSlider {...props}>
-                <ToggleHandle {...props} />
+        <ToggleComponent {...props}>
+            <ToggleText>{offLabel}</ToggleText>
+            <ToggleSlider isActive={isActive}>
+                <ToggleHandle isActive={isActive} />
             </ToggleSlider>
-            <ToggleText>{props.onText}</ToggleText>
+            <ToggleText>{onLabel}</ToggleText>
         </ToggleComponent>
     );
 };

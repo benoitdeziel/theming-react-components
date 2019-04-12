@@ -1,11 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const withIcon = IconComponent => {
-    return class IconHOC extends Component {
-        render() {
-            return <IconComponent {...this.props} />;
-        }
-    };
+const IconSizes = {
+    xs: 12,
+    sm: 20,
+    base: 24,
+    lg: 32,
+    xl: 44,
 };
+
+const withIcon = IconComponent => props => (
+    <IconComponent size={IconSizes[props.size]} />
+);
 
 export default withIcon;

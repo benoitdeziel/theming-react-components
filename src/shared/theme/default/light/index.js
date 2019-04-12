@@ -1,4 +1,8 @@
 import tokens from './tokens';
-import components from './components';
+import primitives from './primitives';
+import * as components from './components';
 
-export default { tokens, components };
+export * from './components';
+export * from './primitives';
+
+export default { tokens, primitives, components };
